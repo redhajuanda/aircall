@@ -1,0 +1,21 @@
+{
+  "name": "va_registration",
+  "version": "1.0.0",
+  "description": "VA Registration API",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "node",
+    "va",
+    "api"
+  ],
+  "author": "Redha Juanda",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "node-salesforce": "^0.8.0",
+    "request": "^2.88.0"
+  }
+}
