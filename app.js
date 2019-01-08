@@ -7,7 +7,7 @@ const config    = require('./config')
 app.listen(port,()=> console.log('Live on PORT ' + port));
 
 app.get('/', (req, res) =>{
-   
+   res.send('Hello World')
 })
 
 app.get('/create_va', (req, res)=>{
