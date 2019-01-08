@@ -57,7 +57,7 @@ function unpair(A){
         }
     }
     // console.log(A);
-    return container[0];
+    console.log(container[0]);
     // console.log(notpair);
 }
 
