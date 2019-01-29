@@ -47,11 +47,11 @@ app.post('/aircall/call', (req, res) => {
                     // console.log(data.id);
                     // res.status(200).send(data.id.toString());
 
-                    console.log(`Transfering call`);
                     const callId = req.body.data.id;
                     const consultantId = data.id.toString();
                     console.log(`Call Id : ${callId}`);
                     console.log(`Consultant Id : ${consultantId}`);
+                    console.log(`Email  : ${data.email}`);
                     return model.forwardCall(callId, consultantId);
                 })
                 .catch((error) => {
