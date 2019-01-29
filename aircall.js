@@ -32,40 +32,40 @@ app.get('/', (req, res) => {
 // })
 
 app.post('/aircall/call', (req, res) => {
-    res.sendStatus(200);
-    console.info(req);
-    // if (req.body.event === 'call.created') {
-    //     if (req.body.data.direction === 'inbound') {
-    //         let phone = req.body.data.raw_digits;
-    //         model.getEmailConsultant("087872737764")
-    //             .then((email) => {
-    //                 // res.send(email);
-    //                 console.log(email);
-    //                 return model.getIdAircallConsultant(email);
-    //             })
-    //             .then((data) => {
-    //                 // console.log(data.id);
-    //                 // res.status(200).send(data.id.toString());
+    // res.sendStatus(200);
 
-    //                 console.log(`Transfering call`);
-    //                 const callId = req.body.data.id;
-    //                 const consultantId = data.id.toString();
-    //                 console.log(`Call Id : ${callId}`);
-    //                 console.log(`Consultant Id : ${consultantId}`);
-    //                 res.status(200).send('Aircall Ok')
-    //                 // return model.forwardCall(callId, consultantId);
-    //             })
-    //             .catch((error) => {
-    //                 res.send(error);
-    //             });
-    //     }
-    //     else {
-    //         console.info('Event direction non-handled:', req.body.data.direction);
-    //     }
-    // }
-    // else {
-    //     console.info('Event non-handled:', req.body.event);
-    // }
+    if (req.body.event && req.body.event === 'call.created') {
+        if (req.body.data.direction === 'inbound') {
+            let phone = req.body.data.raw_digits;
+            model.getEmailConsultant("087872737764")
+                .then((email) => {
+                    // res.send(email);
+                    console.log(email);
+                    return model.getIdAircallConsultant(email);
+                })
+                .then((data) => {
+                    // console.log(data.id);
+                    // res.status(200).send(data.id.toString());
+
+                    console.log(`Transfering call`);
+                    const callId = req.body.data.id;
+                    const consultantId = data.id.toString();
+                    console.log(`Call Id : ${callId}`);
+                    console.log(`Consultant Id : ${consultantId}`);
+                    res.sendSstatus(200).send('Aircall Ok')
+                    // return model.forwardCall(callId, consultantId);
+                })
+                .catch((error) => {
+                    res.send(error);
+                });
+        }
+        else {
+            console.info('Event direction non-handled:', req.body.data.direction);
+        }
+    }
+    else {
+        console.info('Event non-handled');
+    }
 })
 
 app.get('/ping', (req, res) => {
