@@ -1,5 +1,5 @@
 {
-  "name": "Smart Call Routing",
+  "name": "aircall",
   "version": "1.0.0",
   "description": "Smart Call Routing",
   "main": "aircall.js",
