@@ -32,12 +32,12 @@ app.get('/', (req, res) => {
 // })
 
 app.post('/aircall/call', (req, res) => {
-    // res.sendStatus(200);
 
     if (req.body.event && req.body.event === 'call.created') {
         if (req.body.data.direction === 'inbound') {
             let phone = req.body.data.raw_digits;
-            model.getEmailConsultant("081268801101")
+            console.log(`Penelpon : ${phone}`);
+            model.getEmailConsultant(phone)
                 .then((email) => {
                     // res.send(email);
                     console.log(email);

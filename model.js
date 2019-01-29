@@ -7,7 +7,10 @@ function getEmailConsultant(phone) {
     return new Promise((resolve, reject) => {
         conn.login(config.SF_USERNAME, config.SF_PASSWORD, (err, userInfo) => {
             if (err) { return console.error(err) }
-            const query = `SELECT MobilePhone, phone, Owner_Email__c FROM Contact WHERE MobilePhone= '${phone}' `;
+
+            // format phone number 
+            phone = phone.split(" ")[1].replace(/-/g, "");
+            const query = `SELECT MobilePhone, phone, Owner_Email__c FROM Contact WHERE MobilePhone LIKE'%${phone}' `;
             conn.query(query, function (err, result) {
                 if (err) { return console.error(err); }
                 resolve(result.records[0].Owner_Email__c);
