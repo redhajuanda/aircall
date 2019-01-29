@@ -55,7 +55,8 @@ app.post('/aircall/call', (req, res) => {
                     return model.forwardCall(callId, consultantId);
                 })
                 .catch((error) => {
-                    res.sendStatus(200).send(error);
+                    console.log(`Error : ${error}`);
+                    res.sendStatus(200);
                 });
         }
         else {
