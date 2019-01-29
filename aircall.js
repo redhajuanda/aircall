@@ -37,7 +37,7 @@ app.post('/aircall/call', (req, res) => {
     if (req.body.event && req.body.event === 'call.created') {
         if (req.body.data.direction === 'inbound') {
             let phone = req.body.data.raw_digits;
-            model.getEmailConsultant("087872737764")
+            model.getEmailConsultant("081268801101")
                 .then((email) => {
                     // res.send(email);
                     console.log(email);
@@ -52,8 +52,7 @@ app.post('/aircall/call', (req, res) => {
                     const consultantId = data.id.toString();
                     console.log(`Call Id : ${callId}`);
                     console.log(`Consultant Id : ${consultantId}`);
-                    res.sendSstatus(200).send('Aircall Ok')
-                    // return model.forwardCall(callId, consultantId);
+                    return model.forwardCall(callId, consultantId);
                 })
                 .catch((error) => {
                     res.send(error);
