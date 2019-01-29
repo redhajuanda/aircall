@@ -45,7 +45,8 @@ app.post('/aircall/call', (req, res) => {
                     const callId = req.body.data.id;
                     const consultantId = data.id.toString();
                     console.log(`Call Id : ${callId}`);
-                    console.log(`Consultant Id : ${consultantId}`)
+                    console.log(`Consultant Id : ${consultantId}`);
+                    res.status(200).send('Aircall Ok')
                     // return model.forwardCall(callId, consultantId);
                 })
                 .catch((error) => {
