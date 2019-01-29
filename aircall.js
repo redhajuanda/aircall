@@ -9,23 +9,23 @@ app.get('/', (req, res) => {
     res.send('Hello World');
 })
 
-app.get('/aircall', (req, res) => {
+// app.get('/aircall', (req, res) => {
 
-    model.getEmailConsultant("087872737764")
-        .then((email) => {
-            // res.send(email);
-            console.log(email);
-            return model.getIdAircallConsultant(email);
-        })
-        .then((data) => {
-            console.log(data.id);
-            res.status(200).send(data.id.toString());
-        })
-        .catch((error) => {
-            res.send(error);
-        });
+//     model.getEmailConsultant("087872737764")
+//         .then((email) => {
+//             // res.send(email);
+//             console.log(email);
+//             return model.getIdAircallConsultant(email);
+//         })
+//         .then((data) => {
+//             console.log(data.id);
+//             res.status(200).send(data.id.toString());
+//         })
+//         .catch((error) => {
+//             res.send(error);
+//         });
 
-})
+// })
 
 app.post('/aircall/call', (req, res) => {
     if (req.body.event === 'call.created') {
