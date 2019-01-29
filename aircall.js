@@ -55,7 +55,7 @@ app.post('/aircall/call', (req, res) => {
                     return model.forwardCall(callId, consultantId);
                 })
                 .catch((error) => {
-                    res.send(error);
+                    res.sendStatus(200).send(error);
                 });
         }
         else {
@@ -65,6 +65,7 @@ app.post('/aircall/call', (req, res) => {
     else {
         console.info('Event non-handled');
     }
+    res.sendStatus(200)
 })
 
 app.get('/ping', (req, res) => {
