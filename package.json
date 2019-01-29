@@ -4,7 +4,8 @@
   "description": "Smart Call Routing",
   "main": "aircall.js",
   "scripts": {
-    "dev": "nodemon aircall.js"
+    "dev": "nodemon aircall.js",
+    "start": "node aircall.js"
   },
   "keywords": [
     "node",
