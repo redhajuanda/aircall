@@ -1,10 +1,10 @@
 {
-  "name": "va_registration",
+  "name": "Smart Call Routing",
   "version": "1.0.0",
-  "description": "VA Registration API",
-  "main": "app.js",
+  "description": "Smart Call Routing",
+  "main": "aircall.js",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon aircall.js"
   },
   "keywords": [
     "node",
