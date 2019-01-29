@@ -5,8 +5,6 @@ const request = require('request');
 const config = require('./config');
 const model = require('./model');
 
-app.listen(port, () => console.log('Were live on port ' + port));
-
 app.get('/', (req, res) => {
     res.send('Hello World');
 })
@@ -69,3 +67,5 @@ app.get('/ping', (req, res) => {
         res.send(body)
     })
 })
+
+app.listen(port, () => console.log('Were live on port ' + port));
