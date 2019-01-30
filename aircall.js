@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const request = require('request');
-const config = require('./config');
 const model = require('./model');
 const bodyParser = require('body-parser');
 
@@ -12,24 +11,6 @@ app.get('/', (req, res) => {
     console.info("This is root of our server");
     res.json({ 'message': 'Server is running' });
 });
-
-// app.get('/aircall', (req, res) => {
-
-//     model.getEmailConsultant("087872737764")
-//         .then((email) => {
-//             // res.send(email);
-//             console.log(email);
-//             return model.getIdAircallConsultant(email);
-//         })
-//         .then((data) => {
-//             console.log(data.id);
-//             res.status(200).send(data.id.toString());
-//         })
-//         .catch((error) => {
-//             res.send(error);
-//         });
-
-// })
 
 app.post('/aircall/call', (req, res) => {
 
@@ -61,7 +42,10 @@ app.post('/aircall/call', (req, res) => {
                     return model.forwardCall(callId, consultantId);
                 })
                 .then((forward) => {
-                    console.log(forward);
+                    if (forward.statusCode === 204) {
+                        console.log(forward);
+                    }
+
                 })
                 .catch((error) => {
                     console.log(`Error : ${error}`);

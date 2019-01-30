@@ -21,7 +21,7 @@ function getEmailConsultant(phone) {
 
 function getIdAircallConsultant(consultantEmail) {
     return new Promise((resolve, reject) => {
-        const uri = 'https://ea34f205dd5c9d6638bf194f11ec0d18:5270d0f51bd9b431a2f2e2709e2b5f85@api.aircall.io/v1/users';
+        const uri = `https://${config.AC_API_ID}:${config.AC_API_TOKEN}@api.aircall.io/v1/users`;
         request.get(uri, (error, response, body) => {
             if (error) { reject(error) }
             const data = JSON.parse(body);
@@ -52,8 +52,20 @@ function forwardCall(callId, userId) {
     })
 }
 
+function getCalls(callId) {
+    return new Promise((resolve, reject) => {
+        const uri = `https://${config.AC_API_ID}:${config.AC_API_TOKEN}@api.aircall.io/v1/calls/${callId}`;
+        request.get(uri, (error, response, body) => {
+            if (error) { reject(error) }
+            // resolve(console.log(`Call ${callId} transferred to ${userId}`))
+            resolve(response, body);
+        })
+    })
+}
+
 module.exports = {
     getEmailConsultant: getEmailConsultant,
     getIdAircallConsultant: getIdAircallConsultant,
-    forwardCall: forwardCall
+    forwardCall: forwardCall,
+    getCalls: getCalls
 };
