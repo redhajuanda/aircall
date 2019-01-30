@@ -45,7 +45,8 @@ function forwardCall(callId, userId) {
         const uri = `https://${config.AC_API_ID}:${config.AC_API_TOKEN}@api.aircall.io/v1/calls/${callId}/transfers`;
         request.post(uri, { json: { user_id: userId } }, (error, response, body) => {
             if (error) { reject(error) }
-            resolve(console.log(`Call ${callId} transferred to ${userId}`))
+            // resolve(console.log(`Call ${callId} transferred to ${userId}`))
+            resolve(response);
 
         })
     })

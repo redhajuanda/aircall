@@ -37,6 +37,12 @@ app.post('/aircall/call', (req, res) => {
         if (req.body.data.direction === 'inbound') {
             let phone = req.body.data.raw_digits;
             console.log(`Penelpon : ${phone}`);
+            //
+            if (phone != '+62 822-1803-3368') {
+                res.sendStatus(200);
+                console.log('Real People');
+            }
+
             model.getEmailConsultant(phone)
                 .then((email) => {
                     // res.send(email);
@@ -53,6 +59,9 @@ app.post('/aircall/call', (req, res) => {
                     console.log(`Consultant Id : ${consultantId}`);
                     console.log(`Email  : ${data.email}`);
                     return model.forwardCall(callId, consultantId);
+                })
+                .then((forward) => {
+                    console.log(forward);
                 })
                 .catch((error) => {
                     console.log(`Error : ${error}`);
