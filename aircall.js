@@ -62,10 +62,4 @@ app.post('/aircall/call', (req, res) => {
     res.sendStatus(200)
 })
 
-app.get('/ping', (req, res) => {
-    request.get('https://ea34f205dd5c9d6638bf194f11ec0d18:5270d0f51bd9b431a2f2e2709e2b5f85@api.aircall.io/v1/users', (error, response, body) => {
-        res.send(body)
-    })
-})
-
 app.listen(port, () => console.log('Were live on port ' + port));
